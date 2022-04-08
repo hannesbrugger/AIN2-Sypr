@@ -1,0 +1,4 @@
+gcc -g -fno-stack-protector -c aufgabe1.c
+gcc aufgabe1.o -o aufgabe1
+export PATH=$PATH:.
+aufgabe1

@@ -1,0 +1,14 @@
+sudo mount.davfs http://127.0.0.1:9843/ /home/marc/Daten/Studium/
+rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung /home/marc/Schreibtisch/Studium/Semester2
+cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2/bubblesort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2
+
+./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+sort -n out.txt | diff - out.txt
+time java Bubblesort 1000 < /dev/null > /dev/null
+time ./bubblesort 1000 < /dev/null > /dev/null
+time java Bubblesort 10000 < /dev/null > /dev/null
+time ./bubblesort 10000 < /dev/null > /dev/null
+time java Bubblesort 100000 < /dev/null > /dev/null
+time ./bubblesort 100000 < /dev/null > /dev/null
+
+make "CC=gcc -g -O2" clean all

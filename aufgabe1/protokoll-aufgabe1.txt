@@ -1,0 +1,81 @@
+marc@MacBook-Air-von-Marc Aufgabe1 % make clean
+rm -f aufgabe1 aufgabe1.o
+marc@MacBook-Air-von-Marc Aufgabe1 % make aufgabe1
+gcc -g -fno-stack-protector -Wwrite-strings -Wall -Wextra -Werror -std=c11 -pedantic    aufgabe1.c   -o aufgabe1
+marc@MacBook-Air-von-Marc Aufgabe1 % ./aufgabe1
+Adresse		Platzbedarf	Typ			Name		Wert
+0x16b4c7708	4		Int			zahl_int	10
+0x16b4c7706	2		Short Int		zahl_si		12
+0x16b4c76f8	8		Long Int		zahl_li		123
+0x16b4c76f0	8		Long Long Int		zahl_lli	1234
+0x16b4c76ec	4		Unsigned Int		zahl_ui		37777777777
+0x16b4c76ea	2		Unsigned Short Int	zahl_usi	65535
+0x16b4c76e0	8		Unsigned Long Int	zahl_uli	281474976710655
+0x16b4c76d8	8		Unsigned Long Long Int	zahl_ulli	18446744073709551615
+0x16b4c76d4	4		Float			zahl_float	3.140000
+0x16b4c76c8	8		Double			zahl_double	3.140000
+0x16b4c76c0	8		Long Double		zahl_ld		3.140000
+0x16b4c76bf	1		Char			character	b
+0x16b4c76be	1		Signed Char		s_char		-5
+0x16b4c76bd	1		Unsigned Char		u_char		222
+0x16b4c76bc	1		Boolean			boolean		0
+0x16b4c76b0	8		Char*			s		Hallo
+
+LP64
+marc@MacBook-Air-von-Marc Aufgabe1 % ./aufgabe1 | sort
+
+0x16f8876b0	8		Char*			s		Hallo
+0x16f8876bc	1		Boolean			boolean		0
+0x16f8876bd	1		Unsigned Char		u_char		222
+0x16f8876be	1		Signed Char		s_char		-5
+0x16f8876bf	1		Char			character	b
+0x16f8876c0	8		Long Double		zahl_ld		3.140000
+0x16f8876c8	8		Double			zahl_double	3.140000
+0x16f8876d4	4		Float			zahl_float	3.140000
+0x16f8876d8	8		Unsigned Long Long Int	zahl_ulli	18446744073709551615
+0x16f8876e0	8		Unsigned Long Int	zahl_uli	281474976710655
+0x16f8876ea	2		Unsigned Short Int	zahl_usi	65535
+0x16f8876ec	4		Unsigned Int		zahl_ui		37777777777
+0x16f8876f0	8		Long Long Int		zahl_lli	1234
+0x16f8876f8	8		Long Int		zahl_li		123
+0x16f887706	2		Short Int		zahl_si		12
+0x16f887708	4		Int			zahl_int	10
+Adresse		Platzbedarf	Typ			Name		Wert
+LP64
+marc@MacBook-Air-von-Marc Aufgabe1 % ./aufgabe1 | sort -r
+LP64
+Adresse		Platzbedarf	Typ			Name		Wert
+0x16f1a3708	4		Int			zahl_int	10
+0x16f1a3706	2		Short Int		zahl_si		12
+0x16f1a36f8	8		Long Int		zahl_li		123
+0x16f1a36f0	8		Long Long Int		zahl_lli	1234
+0x16f1a36ec	4		Unsigned Int		zahl_ui		37777777777
+0x16f1a36ea	2		Unsigned Short Int	zahl_usi	65535
+0x16f1a36e0	8		Unsigned Long Int	zahl_uli	281474976710655
+0x16f1a36d8	8		Unsigned Long Long Int	zahl_ulli	18446744073709551615
+0x16f1a36d4	4		Float			zahl_float	3.140000
+0x16f1a36c8	8		Double			zahl_double	3.140000
+0x16f1a36c0	8		Long Double		zahl_ld		3.140000
+0x16f1a36bf	1		Char			character	b
+0x16f1a36be	1		Signed Char		s_char		-5
+0x16f1a36bd	1		Unsigned Char		u_char		222
+0x16f1a36bc	1		Boolean			boolean		0
+0x16f1a36b0	8		Char*			s		Hallo
+
+marc@MacBook-Air-von-Marc Aufgabe1 % make cppcheck
+cppcheck --enable=warning,style --std=c11 aufgabe1.c
+Checking aufgabe1.c ...
+aufgabe1.c:42:26: warning: Logical conjunction always evaluates to false: sizeof(int) == 4 && sizeof(long) == 4. [incorrectLogicOperator]
+    if (sizeof(int) == 4 && sizeof(long) == 4 && sizeof(char*) == 4)
+                         ^
+aufgabe1.c:46:31: warning: Logical conjunction always evaluates to false: sizeof(int) == 4 && sizeof(long) == 4. [incorrectLogicOperator]
+    else if (sizeof(int) == 4 && sizeof(long) == 4 && sizeof(long long) == 8 && sizeof(char*) == 8)
+                              ^
+marc@MacBook-Air-von-Marc Aufgabe1 % 
+
+
+Antworten:
+- Die erste angelegte Variable hat die höchste Speicheradresse und die letzte die niedrigste
+- Es gibt Lücken: z. B. zwischen Long Int und Short Int. Die Lücken kommen zustande, 
+    wenn Wortgrenzen überschritten werden und somit nicht mehr durch 8 teilbar ist
+- 88+4 = 92

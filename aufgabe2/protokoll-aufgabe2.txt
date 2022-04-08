@@ -1,0 +1,84 @@
+Nicht optimiert:
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ make clean
+rm -f bubblesort bubblesort.o
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ make bubblesort
+gcc -g -Wall -Wextra -Werror -Wvla -std=c11 -pedantic    bubblesort.c   -o bubblesort
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ sort -n out.txt | diff - out.txt
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 1000 < /dev/null > /dev/null
+
+real	0m0.115s
+user	0m0.125s
+sys	0m0.025s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 1000 < /dev/null > /dev/null
+
+real	0m0.002s
+user	0m0.002s
+sys	0m0.000s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 10000 < /dev/null > /dev/null
+
+real	0m0.198s
+user	0m0.263s
+sys	0m0.040s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 10000 < /dev/null > /dev/null
+
+real	0m0.178s
+user	0m0.178s
+sys	0m0.000s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 100000 < /dev/null > /dev/null
+
+
+real	0m14.055s
+user	0m14.083s
+sys	0m0.092s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 100000 < /dev/null > /dev/null
+
+real	0m22.545s
+user	0m22.544s
+sys	0m0.000s
+
+
+Optimiert:
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ make "CC=gcc -g -O2" clean all
+rm -f bubblesort bubblesort.o
+gcc -g -O2 -Wall -Wextra -Werror -Wvla -std=c11 -pedantic    bubblesort.c   -o bubblesort
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ make bubblesort
+make: „bubblesort“ ist bereits aktuell.
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ sort -n out.txt | diff - out.txt
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 1000 < /dev/null > /dev/null
+
+real	0m0.112s
+user	0m0.138s
+sys	0m0.013s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 1000 < /dev/null > /dev/null
+
+real	0m0.001s
+user	0m0.001s
+sys	0m0.000s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 10000 < /dev/null > /dev/null
+
+real	0m0.164s
+user	0m0.232s
+sys	0m0.027s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 10000 < /dev/null > /dev/null
+
+real	0m0.054s
+user	0m0.054s
+sys	0m0.000s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time java Bubblesort 100000 < /dev/null > /dev/null
+
+real	0m13.955s
+user	0m13.974s
+sys	0m0.096s
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2$ time ./bubblesort 100000 < /dev/null > /dev/null
+
+real	0m11.636s
+user	0m11.635s
+sys	0m0.000s
+
+
+1. Ja, ca.
+2. Das Java Programm ist schneller als das nicht optimierte C-Programm
+Das optimierte C-Programm ist am schnellsten
+3. Ja, es ist deutlich schneller
