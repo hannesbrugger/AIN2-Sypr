@@ -1,6 +1,6 @@
 sudo mount.davfs http://127.0.0.1:9843/ /home/marc/Daten/Studium/
 rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung /home/marc/Schreibtisch/Studium/Semester2
-cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe2/bubblesort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe2
+cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe3/stringsort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe3
 
 ./bubblesort 1000 < /dev/null | tail -1000 > out.txt
 sort -n out.txt | diff - out.txt
