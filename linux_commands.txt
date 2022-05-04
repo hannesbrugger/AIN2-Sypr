@@ -1,14 +1,18 @@
 sudo mount.davfs http://127.0.0.1:9843/ /home/marc/Daten/Studium/
-rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung /home/marc/Schreibtisch/Studium/Semester2
-cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe3/stringsort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe3
+rm -r /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/* && rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung /home/marc/Schreibtisch/Studium/Semester2
 
-./bubblesort 1000 < /dev/null | tail -1000 > out.txt
-sort -n out.txt | diff - out.txt
-time java Bubblesort 1000 < /dev/null > /dev/null
-time ./bubblesort 1000 < /dev/null > /dev/null
-time java Bubblesort 10000 < /dev/null > /dev/null
-time ./bubblesort 10000 < /dev/null > /dev/null
-time java Bubblesort 100000 < /dev/null > /dev/null
-time ./bubblesort 100000 < /dev/null > /dev/null
+//cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe3/stringsort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe3
+
+make stringsort
+./stringsort 200
+valgrind ./stringsort 200
+make cppcheck
+
+make stringsort-optimiert
+./stringsort-optimiert 200
+valgrind ./stringsort-optimiert 200
+
+time ./stringsort 20000 > /dev/null
+time ./stringsort-optimiert 20000 > /dev/null
 
 make "CC=gcc -g -O2" clean all
