@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>arraypointer.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="arraypointer.c">arraypointer.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Zeiger auf Array (vergleiche arrayvar.c)
+<span class="line">   5</span>   *
+<span class="line">   6</span>   * Autor: H.Drachenfels
+<span class="line">   7</span>   * Erstellt am: 28.7.2017 / 10.11.2017 (C11)
+<span class="line">   8</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 11</span>  #include &lt;stdlib.h&gt; // calloc, malloc, free, ...</button>
+<div class="panel help">
+Die Zeile wird gebraucht, damit die Bibliotheksfunktionen 
+calloc und free unten bekannt sind.
+</div>
+
+<button class="accordion"><span class="line">  12</span>  #include &lt;stddef.h&gt; // NULL, size_t, ...</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>      const int n = 4;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 17</span>      int *a = (int*) calloc((size_t) n, sizeof (int));
+<span class="line">+ 18</span>      // oder ohne Initialisierung mit 0: int *a = malloc(n * sizeof (int));</button>
+<div class="panel help">
+Es gibt in C keinen Unterschied zwischen einem Zeiger auf einen einzelnen 
+<code>int</code>-Wert und einem Zeiger auf ein Array von <code>int</code>-Werten.
+<br>
+Die Funktion <code>calloc</code> (alternativ auch <code>malloc</code>)
+aus der C-Bibliothek ist quasi die Entsprechung zum Operator new in Java.
+<br>
+<code>calloc</code> reserviert hier <code> n * sizeof (int) </code> Byte 
+Speicher auf dem Heap und initialisiert diesen Speicher mit Nullen.
+R&uuml;ckgabewert ist die Anfangsadresse des Speichers als Wert vom 
+Typ <code>void*</code>.
+Es ist in C guter Stil und in C++ Pflicht, den Typ <code>void*</code>
+auf den ben&ouml;tigten Zeigertyp anzupassen, hier <code>int*</code>.
+</div>
+
+<button class="accordion"><span class="line">+ 19</span>      if (a == NULL)</button>
+<div class="panel help">
+<code>calloc</code> liefert im Fehlerfall die ung&uuml;ltige Adresse 
+<code>NULL</code> zur&uuml;ck. Bei jeder Speicherreservierung muss
+die gelieferte Adresse auf <code>NULL</code> gestestet werden.
+</div>
+
+<button class="accordion"><span class="line">  20</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>          printf("Speicherreservierung fehlgeschlagen!\n");</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>          return 1;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  23</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 25</span>      a[0] = 3421;
+<span class="line">+ 26</span>      a[1] = 3442;
+<span class="line">+ 27</span>      a[2] = 3635;
+<span class="line">+ 28</span>      a[3] = 3814;</button>
+<div class="panel help">
+Eine Zeigervariable kann in C genau so wie eine Arrayvariable verwendet werden.
+</div>
+
+<button class="accordion"><span class="line">  29</span>    </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>      //------------------------------------ print array values and addresses</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  31</span>      printf("&amp;a = %p\n", (void*) &amp;a);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  32</span>      printf("a = %p\n", (void*) a);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  33</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  34</span>      for (int i = 0; i &lt; n; ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  35</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  36</span>          printf("%d: %p %d\n", i, (void*) &amp;a[i], a[i]);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  37</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  38</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  39</span>      //---------------------------------------------------- print array size</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  40</span>      printf("sizeof a = %zu\n", sizeof a); /* pointer size */</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  41</span>      printf("%d * sizeof *a = %zu\n", n, n * sizeof *a);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  42</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 43</span>      free(a);</button>
+<div class="panel help">
+Es gibt in C keinen Garbage-Collector f&uuml;r den Heap.
+Zu jedem Aufruf von <code>calloc</code> und <code>malloc</code> 
+muss es deshalb einen <code>free</code>-Aufruf geben.
+<br>
+Die Bibliotheksfunktion <code>free</code> macht den nicht mehr ben&ouml;tigten 
+Heap-Speicher wieder f&uuml;r sp&auml;tere <code>calloc</code>- oder 
+<code>malloc</code>-Aufrufe verf&uuml;gbar.
+<br>
+Vergessene Speicherfreigaben sind ein gef&uuml;rchteter Fehler 
+in C-Programmen, die lange am St&uuml;ck laufen m&uuml;ssen.
+<br>
+Das Werkzeug valgrind entdeckt solche Fehler 
+<em>(Speicherlecks, memory leaks)</em>.
+</div>
+
+<button class="accordion"><span class="line">  44</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  45</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  46</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

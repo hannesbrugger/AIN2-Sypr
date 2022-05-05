@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>pointervar.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="pointervar.c">pointervar.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Zeiger-Variable
+<span class="line">   5</span>   *
+<span class="line">   6</span>   * Autor: H.Drachenfels
+<span class="line">   7</span>   * Erstellt am: 25.2.2015 / 10.11.2017 (C11)
+<span class="line">   8</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 14</span>      int i = 3082;</button>
+<div class="panel help">
+Variable mit Name <code>n</code>, Typ <code>int</code> und Wert <code>3082</code>
+</div>
+
+<button class="accordion"><span class="line">+ 15</span>      int *p = &amp;i;</button>
+<div class="panel help">
+Variable mit Name <code>p</code>, Typ <code>int*</code> (Zeiger auf <code>int</code>) 
+und Wert Adresse der Variablen <code>n</code>.
+<br>
+Der &uuml;bliche Formatierungsstil ist, den Stern an den Variablennamen zu schreiben,
+und nicht an den Typnamen.
+Der Stil folgt der inneren Logik der Sprache C, in der die Deklaration <code>int&nbsp;*p</code> 
+aussagt, dass <code>*p</code> (Inhaltsoperator angewendet auf <code>p</code> )
+den Typ <code>int</code> hat.
+Der Unterschied f&auml;llt nur auf, wenn man zwei Variablen zusammen deklariert:
+in <code> int&nbsp;*p,&nbsp;q;</code> hat <code>q</code> den Typ <code>int</code> 
+und nicht <code>int*</code>, ist also keine Zeigervariable.
+Von der Syntax her ist es egal ob und wo Zwischenraum geschrieben wird:
+<code>int*&nbsp;n;</code> und <code>int&nbsp;*n;</code> und <code>int*n;</code> und 
+<code>int&nbsp;*&nbsp;n;</code> bedeuten alle dasselbe.
+</div>
+
+<button class="accordion"><span class="line">  16</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>      //---------------------------------------------- print pointer value</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  18</span>      printf("p = %p\n", (void*) p);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  19</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  20</span>      //-------------------------------------------- print pointer address</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>      printf("&amp;p = %p\n", (void*) &amp;p);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  23</span>      //----------------------------------------------- print pointer size</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>      printf("sizeof p = %zu\n", sizeof p);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>      //--------------------------------- print dereferenced pointer value</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>      printf("*p = %d\n", *p);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  31</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

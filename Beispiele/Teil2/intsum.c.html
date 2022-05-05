@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>intsum.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">+  1</span>  /*
+<span class="line">+  2</span>   * intsum.c
+<span class="line">+  3</span>   *
+<span class="line">+  4</span>   * Liest ganze Zahlen ein und summiert sie.
+<span class="line">+  5</span>   *
+<span class="line">+  6</span>   * Autor: H.Drachenfels
+<span class="line">+  7</span>   * Erstellt am: 3.4.2019
+<span class="line">+  8</span>   */</button>
+<div class="panel help">
+Vergleichen Sie das Programm mit <code>IntSum.java</code> aus dem ersten Semester.
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>      int sum = 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>      printf("Ganze Zahlen eingeben (Ende mit Strg-D):\n");</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  18</span>      int number;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 19</span>      while (scanf("%d", &amp;number) &gt; 0)</button>
+<div class="panel help">
+Die Funktion <code>scanf</code> ist die C-Entsprechung zu den diversen 
+<code>hasNext</code>- und <code>next</code>-Methoden der Klasse <code>Scanner</code> bei Java.
+<br>
+Mit der Formatspezifikation <code>%d</code> analog zu <code>printf</code> wird gesagt, 
+dass eine ganze Zahl mit Vorzeichen in Dezimaldarstellung eingelesen werden soll.
+<br>
+Der R&uuml;ckgabewert von <code>scanf</code> ist <code>1</code>, wenn das Einlesen erfolgreich war.
+Die eingelesene Zahl soll dann in der Variablen <code>number</code> gespeichert werden.
+Deshalb wird die Speicheradresse von <code>number</code> als Argument an 
+<code>scanf</code> &uuml;bergeben.
+<br>
+Der R&uuml;ckgabewert von <code>scanf</code> ist <code>0</code>, 
+wenn etwas anderes als eine Dezimalzahl in der Eingabe steht 
+(z.B. Hallo) und <code>-1</code> bei Eingabeende. 
+In diesen F&auml;llen wird nichts in <code>number</code> gespeichert.
+</div>
+
+<button class="accordion"><span class="line">  20</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>          sum += number;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  23</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>      printf("Summe: %d\n", sum);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

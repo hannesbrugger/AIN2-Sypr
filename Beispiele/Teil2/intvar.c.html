@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>intvar.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span></span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="intvar.c">intvar.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm int-Variable
+<span class="line">   5</span>   *
+<span class="line">   6</span>   * Autor: H.Drachenfels
+<span class="line">   7</span>   * Erstellt am: 25.2.2015 / 10.11.2017 (C11)
+<span class="line">   8</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>      int i = 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>      int j = 1;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>      //------------------------------------------- print variable values</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  18</span>      printf("i = %d\n", i);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  19</span>      printf("j = %d\n", j);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  20</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>      //---------------------------------------- print variable addresses</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 22</span>      printf("&amp;i = %p\n", (void*) &amp;i);
+<span class="line">+ 23</span>      printf("&amp;j = %p\n", (void*) &amp;j);</button>
+<div class="panel help">
+Der Operator <code>&</code> liefert die Adressen der Variablen.
+Die Adressen haben hier den Typ <code>int*</code>.
+<br>
+F&uuml;r die Formatspezifikation <code>%p</code> (p wie pointer, deutsch Zeiger)
+muss der Typ auf <code>void*</code> (Adresse von irgendwas) angepasst werden, weil 
+Adressen verschiederner Typen auf exotischen Rechnern verschieden lang sein k&ouml;nnen.
+Auf normalen Rechnern haben aber alle Adressen die gleiche L&auml;nge,
+z.B. auf einem 64-Bit-Rechner 8&nbsp;Byte.
+</div>
+
+<button class="accordion"><span class="line">  24</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>      //----------------------------------- print type and variable sizes</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 26</span>      printf("sizeof (int) = %zu\n", sizeof (int));
+<span class="line">+ 27</span>      printf("sizeof i = %zu\n", sizeof i);</button>
+<div class="panel help">
+Der Operator <code>sizeof</code> liefert den Platzbedarf in Byte eines Typs oder einer Variablen.
+<br>
+Der Operator liefert eine ganze Zahl ohne Vorzeichen,
+deshalb die Formatspezifikation <code>%u</code>.
+<br>
+Die Anzahl Byte der ganzen Zahl ohne Vorzeichen ist rechnerabh&auml;ngig,
+deshalb der length modifier <code>z</code> in <code>%zu</code>
+(z dritter Buchstabe von size, s und i sind schon f&uuml;r andere Formatspezifikationen vergeben).
+</div>
+
+<button class="accordion"><span class="line">  28</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  31</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

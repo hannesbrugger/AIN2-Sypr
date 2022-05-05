@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>matrixpointer.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="matrixpointer.c">matrixpointer.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Matrix als Feld von Feldern.
+<span class="line">   5</span>   * Siehe zum Vergleich matrixpointerpointer.c
+<span class="line">   6</span>   *
+<span class="line">   7</span>   * Autor: H.Drachenfels
+<span class="line">   8</span>   * Erstellt am: 28.7.2017 / 10.11.2017 (C11)
+<span class="line">   9</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  #include &lt;stdlib.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>  #define M 3 // number of columns</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  18</span>      //--------------------- allocate and initialize memory for 2x3-matrix</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  19</span>      const int n = 2; // number of lines</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 20</span>      int (*matrix)[M] = (int(*)[M]) malloc(n * M * sizeof (int));</button>
+<div class="panel help">
+Ein Zeiger auf ein Array ist ein Zeiger auf das erste Element.
+Das Element ist hier vom Typ <code>int[3]</code>, weshalb der Zeiger vom Typ <code>int(*)[3]</code> ist.
+Die runden Klammern im Typ sind erforderlich, weil <code>int*[3]</code> ein Array von drei Zeigern 
+auf <code>int</code> w&auml;re.
+<br>
+Die Spaltenzahl M muss trotz Speicherung auf dem Heap zu &Uuml;bersetzungszeit feststehen,
+weil sie f&uuml;r die Recheneinheit beim Zugriff <code>matrix[i]</code> gebraucht wird.
+</div>
+
+<button class="accordion"><span class="line">  21</span>      if (matrix == NULL)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  23</span>          printf("Speicherallokierungsfehler\n");</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>          return 1;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>      matrix[0][0] = 10;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>      matrix[0][1] = 11;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>      matrix[0][2] = 12;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>      matrix[1][0] = 20;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  31</span>      matrix[1][1] = 21;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  32</span>      matrix[1][2] = 22;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  33</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  34</span>      //--------------------------------- print matrix addresses and values</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  35</span>      printf("&amp;matrix = %p\n", (void*) &amp;matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  36</span>      printf("matrix = %p\n", (void*) matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  37</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  38</span>      for (int i = 0; i &lt; n; ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  39</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  40</span>          printf("[%d] %p: %p\n", i, (void*) &amp;matrix[i], (void*) matrix[i]);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  41</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  42</span>          for (int j = 0; j &lt; M; ++j)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  43</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  44</span>              printf("  [%d] %p: %d\n", j, (void*) &amp;matrix[i][j], matrix[i][j]);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  45</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  46</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  47</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  48</span>      //------------------------------------------------- print matrix size</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  49</span>      printf("sizeof matrix = %zu\n", sizeof matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  50</span>      printf("%d * sizeof *matrix = %zu\n", n, n * sizeof *matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  51</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  52</span>      free(matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  53</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  54</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  55</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

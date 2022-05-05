@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>arrayvar.cpp</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  /*
+<span class="line">  2</span>   * <a href="arrayvar.cpp">arrayvar.cpp</a>
+<span class="line">  3</span>   *
+<span class="line">  4</span>   * Beispiel-Anwendung von std::array aund std::vector
+<span class="line">  5</span>   * (vergleiche arrayvar.c aus Teil 2)
+<span class="line">  6</span>   *
+<span class="line">  7</span>   * Autor: H.Drachenfels
+<span class="line">  8</span>   * Erstellt am: 4.11.2019
+<span class="line">  9</span>   */</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  #include &lt;iostream&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  #include &lt;array&gt;  // std::array, size, operator[ ], ...</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  #include &lt;vector&gt; // std::vector, size, operator[ ], ...</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 14</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 15</span>  int main()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 16</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 17</span>      std::array&lt;double, 4&gt; a = {3.625, 3.648, 3.853, 4.042};</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 18</span>      for (std::size_t i = 0; i &lt; a.size(); ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 19</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+20</span>          std::cout &lt;&lt; a[i] &lt;&lt; std::endl;</button>
+<div class="panel help">
+<code>std::cout.operator&lt;&lt;(a.operator[](i)).operator&lt;&lt;(std::endl);</code>
+</div>
+
+<button class="accordion"><span class="line"> 21</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 22</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 23</span>      std::cout &lt;&lt; "sizeof a = " &lt;&lt; sizeof a &lt;&lt; '\n';</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 24</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+25</span>      std::vector&lt;double&gt; v = {3.625, 3.648, 3.853, 4.042};</button>
+<div class="panel help">
+Vektoren sind einfach zu benutzen, aber hinter der Fassade ist alles ziemlich kompliziert
+<br>
+(mit der Webseite cppinsights.io k&ouml;nnen Sie hinter die Fassade schauen):
+<br>
+<code>std::vector&lt;double&gt; v = std::vector&lt;double, std::allocator&lt;double&gt; &gt;{std::initializer_list&lt;double&gt;{3.625, 3.648, 3.853, 4.042}, std::allocator&lt;double&gt;()};</code>
+</div>
+
+<button class="accordion"><span class="line"> 26</span>      for (std::size_t i = 0; i &lt; v.size(); ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 27</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+28</span>          std::cout &lt;&lt; v[i] &lt;&lt; std::endl;</button>
+<div class="panel help">
+<code>std::cout.operator&lt;&lt;(v.operator[](i)).operator&lt;&lt;(std::endl);</code>
+</div>
+
+<button class="accordion"><span class="line"> 29</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 30</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 31</span>      std::cout &lt;&lt; "sizeof v = " &lt;&lt; sizeof v &lt;&lt; '\n';</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 32</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 33</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

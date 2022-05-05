@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>intliteral.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="intliteral.c">intliteral.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Zahlen-Literale
+<span class="line">   5</span>   *
+<span class="line">   6</span>   * Autor: H.Drachenfels
+<span class="line">   7</span>   * Erstellt am: 26.10.2018
+<span class="line">   8</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel help">
+Diese Zeile wird gebraucht, damit die Funktion <code>printf</code> bekannt ist.
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 12</span>  int main(void)</button>
+<div class="panel help">
+In C sind Funktionen (hier die Funktion <code>main</code>) 
+die oberste Ebene eines Programms. Klassen gibt es nicht.
+Die Funktion <code>main</code> hat bei C den R&uuml;ckgabetyp <code>int</code>, 
+nicht <code>void</code> wie in Java.
+Mit dem Parametertyp <code>void</code> kann man explizit ausdr&uuml;cken, 
+dass die Kommandozeilenargument des Programmaufrufs ignoriert werden. 
+Das geht in Java nicht.
+</div>
+
+<button class="accordion"><span class="line">  13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 14</span>      printf("%x\n", 12);
+<span class="line">+ 15</span>      printf("%d\n", 012);
+<span class="line">+ 16</span>      printf("%o\n", 0x12);
+<span class="line">+ 17</span>      printf("%u\n", 34U);
+<span class="line">+ 18</span>      printf("%ld\n", 56L);
+<span class="line">+ 19</span>      printf("%lld\n", 78LL);</button>
+<div class="panel help">
+In C gibt nur die formatierte Ausgabe mit <code>printf</code>, 
+keine unformatierte mit <code>print</code> oder <code>println</code>.
+<br>
+Die Formatspezifikationen sind wie in Java, aber es gibt zus&auml;tzlich
+<code>%u</code> f&uuml;r ganze Zahlen ohne Vorzeichen. 
+Au&szlig;erdem muss mit einem "length modifier" angegeben werden, 
+wenn der Typ der auszugebenden Zahl nicht <code>int</code> ist
+(hier <code>l</code>, kleines L, f&uuml;r <code>long int</code> und 
+<code>ll</code>, kleines Doppel-L, f&uuml;r <code>long long int</code>).
+Eine Spezifaktion <code>%n</code> f&uuml;r einen plattformspezifischen 
+Zeilenwechsel gibt es in C nicht.
+</div>
+
+<button class="accordion"><span class="line">+ 20</span>      return 0;</button>
+<div class="panel help">
+Da <code>main</code> den R&uuml;ckgabetyp <code>int</code> hat, 
+muss hier ein Wert zur&uuml;ckgegeben werden.
+<br>
+Die Zahl <code>0</code> bedeutet f&uuml;r die Ablaufumgebung des Programms, 
+dass bei der Ausf&uuml;hrung kein Fehler aufgetreten ist.
+Sie kennen das von <code>System.exit(0)</code> bei Java.
+</div>
+
+<button class="accordion"><span class="line">  21</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

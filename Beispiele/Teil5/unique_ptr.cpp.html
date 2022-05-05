@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>unique_ptr.cpp</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  //
+<span class="line">  2</span>  // <a href="unique_ptr.cpp">unique_ptr.cpp</a>
+<span class="line">  3</span>  //
+<span class="line">  4</span>  // Verwendung von Heap-Speicher in C++11
+<span class="line">  5</span>  //
+<span class="line">  6</span>  // Autor: H.Drachenfels
+<span class="line">  7</span>  // Erstellt am: 23.3.2018</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  8</span>  //</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  #include &lt;memory&gt; // std::unique_ptr&lt;&gt;, ...</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  #include &lt;iostream&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  int main()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 14</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+15</span>      std::unique_ptr&lt;int&gt; p{new int{1}};</button>
+<div class="panel help">
+<code>std::unique_ptr&lt;int&gt; p = std::unique_ptr&lt;int, std::default_delete&lt;int&gt; &gt;{new int{1}};</code>
+</div>
+
+<button class="accordion"><span class="line">+16</span>      std::cout &lt;&lt; *p &lt;&lt; '\n';</button>
+<div class="panel help">
+<code>std::operator&lt;&lt;(std::cout.operator&lt;&lt;(p.operator*()), '\n');</code>
+</div>
+
+<button class="accordion"><span class="line"> 17</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+18</span>      std::unique_ptr&lt;int[]&gt; a{new int[2]};</button>
+<div class="panel help">
+<code>std::unique_ptr&lt;int[]&gt; a = std::unique_ptr&lt;int[], std::default_delete&lt;int[]&gt; &gt;{new int[2]};</code>
+</div>
+
+<button class="accordion"><span class="line">+19</span>      a[0] = 10;</button>
+<div class="panel help">
+<code>a.operator[](0) = 10;</code>
+</div>
+
+<button class="accordion"><span class="line">+20</span>      a[1] = 20;</button>
+<div class="panel help">
+<code>a.operator[](1) = 20;</code>
+</div>
+
+<button class="accordion"><span class="line"> 21</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 22</span>      for (int i = 0; i &lt; 2; ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 23</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+24</span>          std::cout &lt;&lt; a[i] &lt;&lt; '\n';</button>
+<div class="panel help">
+<code>std::operator&lt;&lt;(std::cout.operator&lt;&lt;(a.operator[](i)), '\n');</code>
+</div>
+
+<button class="accordion"><span class="line"> 25</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 26</span>  } // automatische Freigabe des Heap-Speichers</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 27</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

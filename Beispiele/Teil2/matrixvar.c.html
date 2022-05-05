@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>matrixvar.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="matrixvar.c">matrixvar.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Matrix als Array von Arrays.
+<span class="line">   5</span>   * Siehe zum Vergleich matrixpointer.c
+<span class="line">   6</span>   *
+<span class="line">   7</span>   * Autor: H.Drachenfels
+<span class="line">   8</span>   * Erstellt am: 12.8.2020
+<span class="line">   9</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  #include &lt;stdlib.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>  #define M 3 // number of columns</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 18</span>      int matrix[][M] = {{10, 11, 12}, {20, 21, 22}};</button>
+<div class="panel help">
+matrix ist ein Array mit zwei Elementen vom Typ <code>int[M]</code>.<br>
+Die Anzahl M der Spalten d&uuml;rfen Sie nicht weglassen, auch nicht, 
+wenn wie hier eine vollst&auml;ndige Initialisierung angegeben ist.
+</div>
+
+<button class="accordion"><span class="line">  19</span>      const int n = sizeof matrix / sizeof *matrix;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  20</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>      //-------------------------------- print matrix addresses and values</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  22</span>      printf("&amp;matrix = %p\n", (void*) &amp;matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  23</span>      printf("matrix = %p\n", (void*) matrix);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>      for (int i = 0; i &lt; n; ++i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>          printf("[%d] %p\n", i, (void*) matrix[i]);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>          for (int j = 0; j &lt; M; ++j)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 31</span>              printf("  [%d] %p: %d\n", j, (void*) &amp;matrix[i][j], matrix[i][j]);</button>
+<div class="panel help">
+<code>matrix[i][j]</code> ist gleichbedeutend mit <code>*(*(matrix + i) + j)</code>.
+Bei <code>+ i</code> ist die Recheneinheit <code>sizeof (int[3])</code>,
+bei <code>+ j</code> ist die Recheneinheit <code>sizeof (int)</code>.
+</div>
+
+<button class="accordion"><span class="line">  32</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  33</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  34</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  35</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  36</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  37</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

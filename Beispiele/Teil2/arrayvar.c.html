@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>arrayvar.c</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">   1</span>  /*
+<span class="line">   2</span>   * <a href="arrayvar.c">arrayvar.c</a>
+<span class="line">   3</span>   *
+<span class="line">   4</span>   * Beispiel-Programm Array-Variable
+<span class="line">   5</span>   *
+<span class="line">   6</span>   * Autor: H.Drachenfels
+<span class="line">   7</span>   * Erstellt am: 24.9.2020
+<span class="line">   8</span>   */
+</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">   9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #include &lt;stdio.h&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  int main(void)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 14</span>      int a[] = {3421, 3442, 3635, 3814};</button>
+<div class="panel help">
+Hier wird eine Arrayvariable mit Name <code>a</code> und Elementtyp <code>int</code> definiert.
+Weil in den eckigen Klammern keine Arraygr&ouml;&szlig;e angegeben ist, 
+legt die Anzahl der Initialisierungswerte die Arraygr&ouml;&szlig;e 4 fest.
+<br>
+Die Initialisierung ist anders als in Java keine Kurzschreibweise f&uuml;r new.
+Es gibt in C kein new. 
+<br>
+Man beachte auch, dass die eckigen Klammern in C anders als in Java hinter 
+dem Variablennamen stehen.
+<br>
+Der Speicher f&uuml;r das Array wird hier vollst&auml;ndig auf dem Stack 
+angelegt, ein Konzept das es in Java nicht gibt.
+</div>
+
+<button class="accordion"><span class="line">+ 15</span>      const int n = (int)(sizeof a / sizeof (int));</button>
+<div class="panel help">
+In C ist in einem Array anders als in Java nicht gespeichert, wie viele Element das Array hat. 
+<br>
+Deshalb wird hier eine Konstante definiert und mit der Elementanzahl 
+initialisiert. 
+<br>
+Die Elementanzahl kann mit Hilfe von <code>sizeof</code> berechnet werden. 
+Der Ausdruck wird bereits vom Compiler und nicht erst zu Laufzeit des 
+Programms ausgewertet.
+<code>sizeof</code> liefert eine ganze Zahl ohne Vorzeichen
+(Typname <code>size_t</code>), deshalb die Typanpassung <code>(int)</code>.
+</div>
+
+<button class="accordion"><span class="line">  16</span>    </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>      //------------------------------------ print array values and addresses</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 18</span>      printf("&amp;a = %p, &amp;a + 1 = %p\n", (void*) &amp;a, (void*) (&amp;a + 1));
+<span class="line">+ 19</span>      printf("a = %p, a + 1 = %p\n", (void*) a, (void*) (a + 1));</button>
+<div class="panel help">
+Statt <code>(void*) a </code> k&ouml;nnte man die Langschreibweise 
+<code>(void*) &amp;a[0] </code> verwenden (Ausprobieren!).
+<br>
+Auch <code>(void*) &amp;a </code> liefert dieselbe Adresse (Ausprobieren!). 
+<br>
+Allerdings hat <code>&amp;a</code> einen anderen Typ als <code>a</code>, 
+was aber hier wegen der Typanpassung auf <code>void*</code> keine Rolle spielt.
+</div>
+
+<button class="accordion"><span class="line">  20</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 21</span>      for (int i = 0; i &lt; n; ++i)</button>
+<div class="panel help">
+Die Schleife sieht aus wie in Java.
+Es gibt aber kein a.length
+(siehe die Hilfeinformation zur Konstanten <code>n</code> oben).
+</div>
+
+<button class="accordion"><span class="line">  22</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 23</span>          printf("%d: %p %d\n", i, (void*) &amp;a[i], a[i]);</button>
+<div class="panel help">
+Statt <code>&amp;a[i] </code> kann man auch <code>a + i </code> schreiben 
+und statt <code>a[i] </code> auch <code>*(a + i)</code>.
+Ausprobieren!
+</div>
+
+<button class="accordion"><span class="line">  24</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>      //---------------------------------------------------- print array size</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>      printf("sizeof a = %zu\n", sizeof a);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>      return 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  31</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

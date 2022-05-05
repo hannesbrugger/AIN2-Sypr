@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>io.cpp</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  //
+<span class="line">  2</span>  // <a href="io.cpp">io.cpp</a>
+<span class="line">  3</span>  //
+<span class="line">  4</span>  // Ein-/Ausgabe mit C++.
+<span class="line">  5</span>  //
+<span class="line">  6</span>  // Autor: H.Drachenfels
+<span class="line">  7</span>  // Erstellt am: 21.6.2011
+<span class="line">  8</span>  //</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  9</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  #include &lt;iostream&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  int main()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+14</span>    std::cout &lt;&lt; "Dezimalzahl eingeben: ";</button>
+<div class="panel help">
+Dasselbe in Funktionsschreibweise:
+<br>
+<code>std::operator&lt;&lt;(std::cout, "Dezimalzahl eingeben: ");</code>
+</div>
+
+<button class="accordion"><span class="line"> 15</span>    int zahl;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+16</span>    std::cin &gt;&gt; zahl;</button>
+<div class="panel help">
+Dasselbe in Funktionsschreibweise:
+<br>
+<code>std::cin.operator&gt;&gt;(zahl);</code>
+</div>
+
+<button class="accordion"><span class="line">+17</span>    std::cout &lt;&lt; "Hexadezimalzahl: " &lt;&lt; std::hex &lt;&lt; zahl &lt;&lt; std::endl;</button>
+<div class="panel help">
+Dasselbe in Funktionsschreibweise:
+<br>
+<code>std::operator&lt;&lt;(std::cout, "Hexadezimalzahl: ").operator&lt;&lt;(std::hex).operator&lt;&lt;(zahl).operator&lt;&lt;(std::endl);</code>
+</div>
+
+<button class="accordion"><span class="line">+18</span>  }</button>
+<div class="panel help">
+Der Compiler f&uuml;gt vor der Klammer <code> return 0; </code> ein.
+</div>
+
+<button class="accordion"><span class="line"> 19</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

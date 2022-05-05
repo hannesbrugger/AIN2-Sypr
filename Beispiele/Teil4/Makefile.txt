@@ -1,0 +1,31 @@
+#
+# Makefile
+#
+# Erzeugt separate Dateien mit Praeprozessor-Ausgaben.
+#
+# Autor: H.Drachenfels
+# Erstellt am: 13.5.2020
+#
+
+CC = gcc
+CFLAGS = -g -W -Wall -std=c11 -pedantic
+
+OBJECTS = \
+  datetest.o \
+  date.o \
+
+
+all: datetest
+
+clean:
+	rm -f datetest $(OBJECTS)
+
+datetest: $(OBJECTS)
+	$(CC) $(LDFLAGS) -o datetest $(OBJECTS)
+
+datetest.o: datetest.c
+	$(CC) $(CFLAGS) -c datetest.c
+
+date.o: date.c
+	$(CC) $(CFLAGS) -c date.c
+
