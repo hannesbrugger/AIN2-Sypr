@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
         return 1;
     }
     
+    int m = strlen(argv[1]) + sizeof(char);
+    
     char **words = (char **)malloc(n * sizeof(char *));
     if (words == NULL)
     {
@@ -32,7 +34,7 @@ int main(int argc, char *argv[])
     printf("Unsortiertes Array:\n");
     for (int i = 0; i < n; ++i)
     {
-        words[i] = (char *) malloc(strlen(argv[1]) + sizeof(char));
+        words[i] = (char *) malloc(m);
 		if (words[i] == NULL)
 		{
 			printf("Speicherzuweisung fehlgeschlagen\n");

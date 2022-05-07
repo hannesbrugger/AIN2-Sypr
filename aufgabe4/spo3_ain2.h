@@ -8,6 +8,6 @@ bool ist_ain2_modul(const char *modul);
 
 #define SPO_BESTE_NOTE 10
 #define SPO_SCHLECHTESTE_NOTE 50
-#define AIN2_ANZAHL_LEISTUNGEN
+#define AIN2_ANZAHL_LEISTUNGEN 11
 
 #endif

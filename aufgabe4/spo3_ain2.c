@@ -3,6 +3,9 @@
 #include <stdbool.h>
 #include <string.h>
 
+bool ist_spo_note(int note);
+bool ist_ain2_modul(const char *modul);
+
 bool ist_spo_note(int note)
 {
     switch (note)
@@ -42,7 +45,7 @@ bool ist_ain2_modul(const char *modul)
     {
         return true;
     }
-    else if (strcmp(modul, "Stochastik") == true)
+    else if (strcmp(modul, "Stochastik") == 0)
     {
         return true;
     }

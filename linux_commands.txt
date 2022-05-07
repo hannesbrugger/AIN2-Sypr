@@ -1,5 +1,7 @@
 sudo mount.davfs http://127.0.0.1:9843/ /home/marc/Daten/Studium/
-rm -r /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/* && rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung /home/marc/Schreibtisch/Studium/Semester2
+
+rm -r /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/* 
+rsync --progress -r -u /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung
 
 //cp /home/marc/Daten/Studium/Systemprogrammierung/sypr-uebungen/aufgabe3/stringsort.c /home/marc/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe3
 
