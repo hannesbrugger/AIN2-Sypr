@@ -5,6 +5,10 @@
 #include <stdbool.h>
 #include <stdio.h>
 
+// Zusatzaufgabe (bei scanf Variable Stringlänge)
+#define STR2(x) #x
+#define STR(X) STR2(X)
+
 bool leistung_einlesen(struct leistung *leistung);
 void ausgeben(struct leistung *leistung);
 static void ausgeben_benotet(int note);
@@ -16,13 +20,14 @@ bool leistung_einlesen(struct leistung *leistung)
     if (leistung->modul == NULL)
     {
         printf("Speicherreservierung fehlgeschlagen\n");
-        return 1;
+        return false;;
     }
     int note;
     char status;
 
     // Modul einlesen
-    if (scanf("%21s", leistung->modul) == 0)
+    // Zusatzaufgabe (bei scanf Variable Stringlänge)
+    if (scanf("%" STR(MODUL_SIZE) "s", leistung->modul) == 0)
     {
         free(leistung->modul);
         return false;
