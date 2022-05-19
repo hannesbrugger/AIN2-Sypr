@@ -16,12 +16,12 @@ static void ausgeben_unbenotet(char status);
 
 bool leistung_einlesen(struct leistung *leistung)
 {
-    leistung->modul = malloc(MODUL_SIZE);
+    /*leistung->modul = malloc(MODUL_SIZE);
     if (leistung->modul == NULL)
     {
         printf("Speicherreservierung fehlgeschlagen\n");
         return false;;
-    }
+    }*/
     int note;
     char status;
 
@@ -29,7 +29,7 @@ bool leistung_einlesen(struct leistung *leistung)
     // Zusatzaufgabe (bei scanf Variable Stringlänge)
     if (scanf("%" STR(MODUL_SIZE) "s", leistung->modul) == 0)
     {
-        free(leistung->modul);
+        //free(leistung->modul);
         return false;
     }
     
@@ -48,7 +48,7 @@ bool leistung_einlesen(struct leistung *leistung)
     // Fehleingabe
     else
     {
-        free(leistung->modul);
+        //free(leistung->modul);
         return false;
     }
     
@@ -88,7 +88,7 @@ void ausgeben(struct leistung *leistung)
         }
     }
     printf("\n");
-    free(leistung->modul);
+    //free(leistung->modul);
 }
 
 static void ausgeben_benotet(int note)

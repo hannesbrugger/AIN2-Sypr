@@ -3,12 +3,14 @@
 #ifndef LEISTUNG_H
 #define LEISTUNG_H
 
+#define MODUL_SIZE 20
+
 enum leistungsart { benotet, unbenotet };
 
 struct leistung
 {
     enum leistungsart u_type;
-    char *modul;
+    char modul[MODUL_SIZE+1];
 
     union
     {
@@ -22,8 +24,5 @@ typedef struct leistung leistung;
 
 bool leistung_einlesen(struct leistung *leistung);
 void ausgeben(struct leistung *leistung);
-
-// Warum geht das hier nur mit 21 anstatt 20?
-#define MODUL_SIZE 21
 
 #endif
