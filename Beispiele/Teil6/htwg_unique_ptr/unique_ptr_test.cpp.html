@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../../help.css">
+<title>unique_ptr_test.cpp</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  /*
+<span class="line">  2</span>   * <a href="unique_ptr_test.cpp">unique_ptr_test.cpp</a>
+<span class="line">  3</span>   *
+<span class="line">  4</span>   * Autor: H.Drachenfels
+<span class="line">  5</span>   * Erstellt am: 10.12.2019
+<span class="line">  6</span>   */</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  7</span>  #include &lt;iostream&gt; // std::cout</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  8</span>  #include &lt;utility&gt;  // std::move</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  9</span>  #include "htwg_unique_ptr.h"</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  int main()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+13</span>      htwg::unique_ptr&lt;int&gt; p{new int{123}};</button>
+<div class="panel help">
+Auf dem Heap wird Speicher f&uuml;r ein <code>int</code> reserviert und 
+mit <code>123</code> initialisiert. Die Adresse wird in einem 
+<code>htwg::unique_ptr</code>-Objekt auf dem Stack gespeichert.
+</div>
+
+<button class="accordion"><span class="line">+14</span>      std::cout &lt;&lt; "*p = *" &lt;&lt; p.get() &lt;&lt; " = " &lt;&lt; *p &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktionen aus htwg_unique_ptr.h:<br>
+<code>get() const</code><br>
+<code>operator*() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 15</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 16</span>      //auto q = p; // copy unsupported
+<span class="line">+17</span>      auto q = std::move(p);</button>
+<div class="panel help">
+Der intelligente Zeiger <code>p</code> kann nicht kopiert werden.
+Mit <code>std::move</code> kann aber so getan werden, 
+als sei <code>p</code> ein tempor&auml;res Objekt.
+Das erlaubt es dem Move-Konstruktor von <code>htwg::unique_ptr</code> 
+die Adresse aus <code>p</code> zu "stehlen" und damit <code>q</code> initialisieren.
+In <code>p</code> steht anschließend die Adresse <code>nullprt</code>.
+</div>
+
+<button class="accordion"><span class="line">+18</span>      std::cout &lt;&lt; "*q = *" &lt;&lt; q.get() &lt;&lt; " = " &lt;&lt; *q &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktionen aus htwg_unique_ptr.h:<br>
+<code>get() const</code><br>
+<code>operator*() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 19</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+20</span>      htwg::unique_ptr&lt;int&gt; r;</button>
+<div class="panel help">
+Das neue Objekt <code>r</code> auf dem Stack wird vom Default-Konstruktor 
+mit <code>nullprt</code> initialisiert.
+</div>
+
+<button class="accordion"><span class="line">+21</span>      if (r != q)</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>operator!=(const unique_ptr&lt;T&gt;&amp;,const unique_ptr&lt;T&gt;&amp;)</code>
+</div>
+
+<button class="accordion"><span class="line"> 22</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 23</span>          //r = q; // copy unsupported
+<span class="line">+24</span>          r = std::move(q);</button>
+<div class="panel help">
+Hier "stiehlt" die Move-Zuweisung von <code>htwg::unique_ptr</code> 
+die Adresse aus <code>q</code> und schreibt sie in <code>r</code>. 
+<br>
+In <code>q</code> steht anschließend <code>nullprt</code>.
+Vergleiche Zeile&nbsp;17.
+</div>
+
+<button class="accordion"><span class="line">+25</span>          std::cout &lt;&lt; "*r = *" &lt;&lt; r.get() &lt;&lt; " = " &lt;&lt; *r &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktionen aus htwg_unique_ptr.h:<br>
+<code>get() const</code><br>
+<code>operator*() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 26</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 27</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 28</span>      r = std::move(r);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 29</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+30</span>      if (!p)</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>operator bool() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 31</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+32</span>          std::cout &lt;&lt; "p = " &lt;&lt; p.get() &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>get() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 33</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 34</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+35</span>      if (q == p)</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>operator==(const unique_ptr&lt;T&gt;&amp;,const unique_ptr&lt;T&gt;&amp;)</code>
+</div>
+
+<button class="accordion"><span class="line"> 36</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+37</span>          std::cout &lt;&lt; "q = " &lt;&lt; q.get() &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>get() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 38</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 39</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+40</span>      if (r)</button>
+<div class="panel help">
+Aufgerufene Funktion aus htwg_unique_ptr.h:<br>
+<code>operator bool() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 41</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+42</span>          std::cout &lt;&lt; "*r = *" &lt;&lt; r.get() &lt;&lt; " = " &lt;&lt; *r &lt;&lt; '\n';</button>
+<div class="panel help">
+Aufgerufene Funktionen aus htwg_unique_ptr.h:<br>
+<code>get() const</code><br>
+<code>operator*() const</code>
+</div>
+
+<button class="accordion"><span class="line"> 43</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+44</span>  } // automatische Freigabe des Heap-Speichers</button>
+<div class="panel help">
+F&uuml;r <code>r</code>, <code>q</code> und <code>p</code> wird 
+(in dieser Reihenfolge) der Destruktor aufgerufen und im Fall von <code>r</code>
+der in Zeile&nbsp;13 allokierte Heap-Speicher freigegeben.
+</div>
+
+<button class="accordion"><span class="line"> 45</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../../accordion.js"></script>
+</body>
+</html>

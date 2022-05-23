@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../help.css">
+<title>makevar.mak</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  #
+<span class="line">  2</span>  # <a href="makevar.mak">makevar.mak</a>
+<span class="line">  3</span>  #
+<span class="line">  4</span>  # Zeigt das rekursive Expandieren von Variablen.
+<span class="line">  5</span>  # Test mit make -f makevar.mak
+<span class="line">  6</span>  #
+<span class="line">  7</span>  # Autor: H.Drachenfels
+<span class="line">  8</span>  # Version: 30.11.2017
+<span class="line">  9</span>  #</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+11</span>  NAME = $(VORNAME) Beispiel</button>
+<div class="panel help">
+In einer Variablenzuweisung wird die rechte Seite nicht ausgewertet.<br>
+<code>NAME</code> enth&auml;lt als Wert einfach den String <code>$(VORNAME) Beispiel</code>.
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  VORNAME = Benno</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 14</span>  all:</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+15</span>  	echo $(NAME)</button>
+<div class="panel help">
+Der Wert der Variablen <code>NAME</code> wird rekursiv expandiert.
+Erst hier wird im Wert von <code>NAME</code> der Wert von <code>VORNAME</code> bestimmt.
+Deshalb gibt das Kommando unabh&auml;ngig von der Reihenfolge der Zeilen&nbsp;11 und 12 
+<code>Benno Beispiel</code> aus.
+</div>
+
+<button class="accordion"><span class="line"> 16</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../accordion.js"></script>
+</body>
+</html>

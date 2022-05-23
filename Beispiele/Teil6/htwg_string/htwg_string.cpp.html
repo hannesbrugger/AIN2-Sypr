@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../../help.css">
+<title>htwg_string.cpp</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  /*
+<span class="line">  2</span>   * <a href="htwg_string.cpp">htwg_string.cpp</a>
+<span class="line">  3</span>   *
+<span class="line">  4</span>   * Stark vereinfachte String-Klasse.
+<span class="line">  5</span>   *
+<span class="line">  6</span>   * Autor: H.Drachenfels
+<span class="line">  7</span>   * Erstellt am: 5.6.2020
+<span class="line">  8</span>   */</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  9</span>  #include "htwg_string.h"</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  using namespace htwg;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  #include &lt;cstring&gt;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 14</span>  // Konstruktoren und Destruktor</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+15</span>  string::string()</button>
+<div class="panel help">
+Ohne Zeile 10 m&uuml;sste man <code>htwg::string::string()</code> schreiben.
+</div>
+
+<button class="accordion"><span class="line"> 16</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 17</span>      this-&gt;n = 0;
+<span class="line"> 18</span>      this-&gt;s = new char[1];
+<span class="line">+19</span>      *this-&gt;s = '\0';</button>
+<div class="panel help">
+Auch f&uuml;r den leeren String muss Speicher reserviert werden,
+und zwar mit <code>new[]</code>, damit man in den anderen Funktionen 
+keine Fallunterscheidungen f&uuml;r leere Strings braucht und 
+im Destruktor immer <code>delete[]</code> richtig ist.
+</div>
+
+<button class="accordion"><span class="line"> 20</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 21</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 22</span>  string::string(const char* s)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 23</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 24</span>      this-&gt;n = std::strlen(s);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 25</span>      this-&gt;s = new char[this-&gt;n + 1];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 26</span>      std::strcpy(this-&gt;s, s);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 27</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 28</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 29</span>  string::string(const string&amp; that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 30</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 31</span>      this-&gt;n = that.n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 32</span>      this-&gt;s = new char[this-&gt;n + 1];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 33</span>      std::strcpy(this-&gt;s, that.s);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 34</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 35</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 36</span>  string::string(string&amp;&amp; that) : n(that.n), s(that.s)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 37</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 38</span>      that.n = 0;
+<span class="line">+39</span>      that.s = nullptr;</button>
+<div class="panel help">
+Die Sprachspezifikation verlangt, dass das tempor&auml;re Objekt 
+<code>that</code> in einem zwar undefinierten, aber konsistenten 
+Zustand hinterlassen wird. Zwingend ist, dass der Destruktor bei dem
+"bestohlenen" Objekt nicht abst&uuml;rzt. Das tut er hier nicht,
+weil <code>delete[] nullptr</code> erlaubt ist. Einige andere Memberfunktionen 
+w&uuml;rden allerdings mit <code>nullptr</code> abst&uuml;rzen, 
+sollten bei einem tempor&auml;ren Objekt aber auch nicht aufgerufen werden.
+</div>
+
+<button class="accordion"><span class="line"> 40</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 41</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 42</span>  string::~string()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 43</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 44</span>      delete[] this-&gt;s;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 45</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 46</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 47</span>  // Zuweisungen</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 48</span>  string&amp; string::operator=(const string&amp; that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 49</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 50</span>      if (this != &amp;that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 51</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 52</span>          delete[] this-&gt;s;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 53</span>          this-&gt;n = that.n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 54</span>          this-&gt;s = new char[this-&gt;n + 1];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 55</span>          std::strcpy(this-&gt;s, that.s);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 56</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 57</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 58</span>      return *this;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 59</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 60</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 61</span>  string&amp; string::operator=(string&amp;&amp; that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 62</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 63</span>      if (this != &amp;that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 64</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 65</span>          delete[] this-&gt;s;
+<span class="line"> 66</span>          this-&gt;n = that.n;
+<span class="line"> 67</span>          this-&gt;s = that.s;
+<span class="line"> 68</span>          that.n = 0;
+<span class="line">+69</span>          that.s = nullptr;</button>
+<div class="panel help">
+Implementierung analog zum Move-Konstruktor. 
+Allerdings muss bei der Move-Zuweisung erst der alte Wert der linken Seite 
+aufger&auml;umt werden. In der Praxis ist es eher &uuml;blich, 
+hier die Werte der Membervariablen von <code>this</code> und
+<code>that</code> zu tauschen (die Bibliothek unterst&uuml;tzt das sogar 
+mit einem Funktions-Template <code>std::swap</code>).
+</div>
+
+<button class="accordion"><span class="line"> 70</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 71</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 72</span>      return *this;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 73</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 74</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 75</span>  string&amp; string::operator+=(const string&amp; that)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 76</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 77</span>      std::size_t m = this-&gt;n + that.n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 78</span>      char *t = new char[m + 1];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 79</span>      std::strcpy(t, this-&gt;s);</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+80</span>      std::strcpy(t + this-&gt;n, that.s);</button>
+<div class="panel help">
+<code>std::strcat(t, that.s)</code> w&auml;re langsamer, weil da zuerst 
+in <code>t</code> das <code>'\0'</code>-Zeichen gesucht werden muss.
+</div>
+
+<button class="accordion"><span class="line"> 81</span>      delete[] this-&gt;s;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 82</span>      this-&gt;n = m;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 83</span>      this-&gt;s = t;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 84</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 85</span>      return *this;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 86</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 87</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 88</span>  // Vergleich(e)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 89</span>  namespace htwg</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 90</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 91</span>      bool operator&lt;(const string&amp; lhs, const string&amp; rhs)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 92</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 93</span>          return std::strcmp(lhs.s, rhs.s) &lt; 0;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 94</span>      }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 95</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 96</span>   </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 97</span>  // Datenabfragen</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 98</span>  const char* string::c_str() const</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 99</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">100</span>      return this-&gt;s;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">101</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">102</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">103</span>  std::size_t string::length() const</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">104</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">105</span>      return this-&gt;n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">106</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">107</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../../accordion.js"></script>
+</body>
+</html>

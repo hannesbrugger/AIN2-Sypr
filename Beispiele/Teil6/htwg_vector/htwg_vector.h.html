@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../../help.css">
+<title>htwg_vector.h</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span></span>
+</header>
+
+<button class="accordion"><span class="line">+  1</span>  /*
+<span class="line">+  2</span>   * htwg_vector.h
+<span class="line">+  3</span>   *
+<span class="line">+  4</span>   * Stark vereinfachte Vektor-Klasse.
+<span class="line">+  5</span>   *
+<span class="line">+  6</span>   * Autor: H.Drachenfels
+<span class="line">+  7</span>   * Erstellt am: 11.5.2022
+<span class="line">+  8</span>   */</button>
+<div class="panel help">
+Bei Klassen-Templates muss die ganze Implementierung 
+in der Header-Datei stehen. Die .cpp-Datei entf&auml;llt.
+</div>
+
+<button class="accordion"><span class="line">   9</span>  #ifndef HTWG_VECTOR_H</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  10</span>  #define HTWG_VECTOR_H</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  12</span>  #include &lt;cstddef&gt; // size_t</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  14</span>  namespace htwg</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  15</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  16</span>      template&lt;typename T&gt; class  vector</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  17</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  18</span>      private:</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  19</span>          std::size_t n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  20</span>          T *v;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  21</span>      public:</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 22</span>          explicit vector(std::size_t n)</button>
+<div class="panel help">
+C++ verwendet Konstuktoren mit einem Parameter auch f&uuml;r 
+automatische Typumwandlungen. Mit <code>explicit</code>
+wird das unterbunden. Es ist nicht w&uuml;nschenswert, dass der Compiler
+<code>unsigned</code>-Werte implizit in <code>vector</code>-Objekte umwandelt.
+Das Risiko, dass das an v&ouml;llig unsinnigen Stellen passiert, ist zu hoch.
+</div>
+
+<button class="accordion"><span class="line">  23</span>          : n(n), v(new T[n]) // Arrayelemente uninitialisiert</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  24</span>          { }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  25</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  26</span>          ~vector()</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  27</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  28</span>              delete[] this-&gt;v;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  29</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  30</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">+ 31</span>          // Kopiersemantik unterbinden:
+<span class="line">+ 32</span>          vector(const vector&amp; v) = delete;
+<span class="line">+ 33</span>          vector&amp; operator=(const vector&amp; v) = delete;
+<span class="line">+ 34</span>          vector(vector&amp;&amp; v) = delete;
+<span class="line">+ 35</span>          vector&amp; operator=(vector&amp;&amp; v) = delete;</button>
+<div class="panel help">
+<code>std::vector</code> ist eine Wertklasse. 
+<code>htwg::vector</code> ist der Einfachheit halber eine Entity-Klasse 
+ohne Kopie- und Move-Semantik. Die Klasse ist ein einfacher Wrapper 
+f&uuml;r die Adresse eines C-Arrays, erg&auml;nzt um die Elementanzahl.
+</div>
+
+<button class="accordion"><span class="line">  36</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  37</span>          std::size_t size() const</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  38</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  39</span>              return this-&gt;n;</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  40</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  41</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  42</span>          T&amp; operator[](std::size_t i)</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  43</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  44</span>              // Verbesserungsvorschlag: Index pruefen</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  45</span>              return this-&gt;v[i];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  46</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  47</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  48</span>          const T&amp; operator[](std::size_t i) const</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  49</span>          {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  50</span>              // Verbesserungsvorschlag: Index pruefen</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  51</span>              return this-&gt;v[i];</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  52</span>          }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  53</span>      };</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  54</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  55</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  56</span>  #endif</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  57</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../../accordion.js"></script>
+</body>
+</html>

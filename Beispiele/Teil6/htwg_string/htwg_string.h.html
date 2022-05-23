@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" type="text/css" href="../../help.css">
+<title>htwg_string.h</title>
+</head>
+
+<body>
+<header>
+<span>
+Klicken Sie Zeilen an, die mit + markiert sind. Dort ist Hilfeinformation hinterlegt.</span>
+</header>
+
+<button class="accordion"><span class="line">  1</span>  /*
+<span class="line">  2</span>   * <a href="htwg_string.h">htwg_string.h</a>
+<span class="line">  3</span>   *
+<span class="line">  4</span>   * Stark vereinfachte String-Klasse.
+<span class="line">  5</span>   *
+<span class="line">  6</span>   * Autor: H.Drachenfels
+<span class="line">  7</span>   * Erstellt am: 22.11.2019
+<span class="line">  8</span>   */</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line">  9</span>  #ifndef HTWG_STRING_H</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 10</span>  #define HTWG_STRING_H</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 11</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 12</span>  #include &lt;cstdlib&gt; // size_t</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 13</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 14</span>  namespace htwg</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 15</span>  {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 16</span>      class string</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 17</span>      {</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 18</span>      public:
+<span class="line"> 19</span>          // Konstruktoren und Destruktor
+<span class="line"> 20</span>          string();
+<span class="line"> 21</span>          string(const char*);
+<span class="line"> 22</span>          string(const string&amp;);
+<span class="line"> 23</span>          string(string&amp;&amp;);
+<span class="line"> 24</span>          ~string();
+<span class="line"> 25</span>  
+<span class="line"> 26</span>          // Zuweisungen
+<span class="line"> 27</span>          string&amp; operator=(const string&amp;);
+<span class="line"> 28</span>          string&amp; operator=(string&amp;&amp;);
+<span class="line"> 29</span>          string&amp; operator+=(const string&amp;);
+<span class="line"> 30</span>  
+<span class="line"> 31</span>          // Vergleich(e)
+<span class="line"> 32</span>          friend bool operator&lt;(const string&amp;, const string&amp;);
+<span class="line"> 33</span>   
+<span class="line"> 34</span>          // Datenabfragen
+<span class="line"> 35</span>          const char* c_str() const;
+<span class="line"> 36</span>          std::size_t length() const;
+<span class="line"> 37</span>  
+<span class="line"> 38</span>      private:
+<span class="line"> 39</span>          std::size_t n;
+<span class="line">+40</span>          char *s;</button>
+<div class="panel help">
+Die Klasse ist als einfacher Wrapper f&uuml;r einen C-String gebaut.
+Damit die L&auml;nge des C-Strings in konstanter Zeit abgefragt werden kann,
+wird zus&auml;tzlich zur Anfangsadresse des Strings die Stringl&auml;nge 
+gespeichert.
+Weil die Objekte damit einen Zeiger enthalten und 
+der Speicher f&uuml;r den C-String auf dem Heap verwaltet wird, 
+m&uuml;ssen die Copy- und Move-Funktionen sowie der Destruktor 
+selbst programmiert werden (Rule of five). 
+Die vom Compiler automatisch erzeugten Default-Versionen w&auml;ren falsch.
+</div>
+
+<button class="accordion"><span class="line"> 41</span>      };</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 42</span>  }</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 43</span>  </button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 44</span>  #endif</button>
+<div class="panel">
+</div>
+
+<button class="accordion"><span class="line"> 45</span>  </button>
+<div class="panel">
+</div>
+
+
+<script src="../../accordion.js"></script>
+</body>
+</html>
