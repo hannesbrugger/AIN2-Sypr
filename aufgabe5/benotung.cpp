@@ -2,7 +2,7 @@
 #include <stdexcept>
 
 const benotung benotung::beste = benotung(10);
-const benotung benotung::schlechteste = benotung(10);
+const benotung benotung::schlechteste = benotung(50);
 
 benotung::benotung(int note)
 : note(note)
@@ -34,7 +34,7 @@ int benotung::int_value() const
     return this->note;
 }
 
-bool benotung::ist_bestanden()
+bool benotung::ist_bestanden() const
 {
     return this->note < schlechteste.int_value();
 }

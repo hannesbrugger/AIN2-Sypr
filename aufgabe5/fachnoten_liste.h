@@ -1,14 +1,17 @@
 #ifndef FACHNOTEN_LISTE_H
 #define FACHNOTEN_LISTE_H
 
+#include "fachnote.h"
+
 class fachnoten_liste final
 {
 private:
     class element;
     element *head;
+    void (*vFunctionCall)(fachnote*);
 
 public:
-    fachnoten_liste();
+    explicit fachnoten_liste(void(fachnote*));
     ~fachnoten_liste();
     // Entity-Klasse ohne Kopier- und Move-Semantik
     fachnoten_liste(const fachnoten_liste&) = delete;
@@ -25,10 +28,10 @@ public:
         explicit iterator(element*);
     public:
         bool operator!=(const iterator&) const;
-        int& operator*() const;
+        fachnote*& operator*() const;
         iterator& operator++();
 
-        friend class intlist;
+        friend class fachnoten_liste;
     };
 
     iterator begin();

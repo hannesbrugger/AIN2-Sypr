@@ -8,7 +8,7 @@ public:
     static const benotung beste;
     static const benotung schlechteste;
     int int_value() const;
-    bool ist_bestanden();
+    bool ist_bestanden() const;
     friend bool operator==(const benotung&, const benotung&);
     // Frage: welche Memberfunktionen erzeugt der Compiler zusätzlich implizit
     // in benotung? Implementiert er die in diesem Fall korrekt?

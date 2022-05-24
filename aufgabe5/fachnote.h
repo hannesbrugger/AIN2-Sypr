@@ -2,6 +2,7 @@
 #define FACHNOTE_H
 
 #include <string>
+#include "benotung.h"
 
 class fachnote
 {
