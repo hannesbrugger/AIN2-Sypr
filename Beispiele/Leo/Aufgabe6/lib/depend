@@ -1,0 +1,4 @@
+fachnoten_liste.o: fachnoten_liste.cpp fachnoten_liste.h fachnote.h \
+ benotung.h
+fachnote.o: fachnote.cpp fachnote.h benotung.h
+benotung.o: benotung.cpp benotung.h
