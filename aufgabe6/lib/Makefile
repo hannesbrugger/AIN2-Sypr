@@ -1,6 +1,5 @@
 CXX = g++ -g #-fno-elide-constructors
 CXXFLAGS = -fPIC -Wall -Wextra -Werror -Weffc++ -Wold-style-cast -std=$(STD) -pedantic
-CPPCHECK = cppcheck --enable=warning,style --std=$(STD)
 STD = c++11
 STATIC = ar rcs
 DYNAMIC = g++ -shared
@@ -12,7 +11,7 @@ LIBNAME = aufgabe6
 SOURCES = \
 	benotung.cpp \
 	fachnote.cpp \
-	benotung.cpp \
+	fachnoten_liste.cpp \
 
 HEADERS = $(SOURCES:.cpp=.h)
 OBJECTS = $(SOURCES:.cpp=.o)
@@ -25,16 +24,16 @@ clean:
 	rm -f lib$(LIBNAME).a lib$(LIBNAME).so $(OBJECTS) depend
 
 lib$(LIBNAME).a: $(OBJECTS)
-	$(STATIC) $@ $<
+	$(STATIC) $@ $^
 
 lib$(LIBNAME).so: $(OBJECTS)
-	$(DYNAMIC) $(CXXFLAGS) -o $@ $<
+	$(DYNAMIC) $(CXXFLAGS) -o $@ $^
 
-%: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ $<
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 depend: $(SOURCES) $(HEADERS)
-	$(CXX) $(CXXFLAGS) - MM $(SOURCES) > $@
+	$(CXX) $(CXXFLAGS) -MM $(SOURCES) > $@
 
 include depend
 
