@@ -6,9 +6,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
- 
 
-# Make data base, printed on Sun Jun 19 13:29:01 2022
+# Make data base, printed on Thu Jun 23 16:32:37 2022
 
 # Variables
 
@@ -39,7 +38,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/w6/v2ng0tcn11ndfhyn0_thm2_h0000gn/T/vscode-ipc-fba49e0f-4749-4f4e-876a-8470b9afdb7b.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/w6/v2ng0tcn11ndfhyn0_thm2_h0000gn/T/vscode-ipc-1708fb68-0f4c-426a-8d13-6812aeaef0d5.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -72,9 +71,6 @@ VSCODE_PIPE_LOGGING = true
 PWD = /Users/marc/Studium/Semester2/Systemprogrammierung/sypr-uebungen
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
- 
-make: *** No rule to make target `all'.  Stop.
-
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -82,7 +78,7 @@ HOME = /Users/marc
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/marc/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/marc/Library/Application Support/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
 LOGNAME = marc
 # environment
@@ -124,7 +120,7 @@ TMPDIR = /var/folders/w6/v2ng0tcn11ndfhyn0_thm2_h0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/marc/Library/Application Support/Code/1.67.2-main.sock
+VSCODE_IPC_HOOK = /Users/marc/Library/Application Support/Code/1.68.1-main.sock
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -132,7 +128,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.28484504.28484510
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.31589352.31589358
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -162,7 +158,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 72119
+VSCODE_PID = 97758
 # variable set hash-table stats:
 # Load=74/1024=7%, Rehash=0, Collisions=2/94=2%
 
@@ -246,6 +242,8 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sun Jun 19 13:29:01 2022
+# Finished Make data base on Thu Jun 23 16:32:37 2022
 
  
+make: *** No rule to make target `all'.  Stop.
+
