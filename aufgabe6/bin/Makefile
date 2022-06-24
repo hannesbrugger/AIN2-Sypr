@@ -17,7 +17,7 @@ HEADERS = \
 SOURCES = $(TARGET).cpp
 OBJECTS = $(TARGET).o
 
-.PHONY: all clean
+ .PHONY: all clean
 
 all: $(TARGET)
 
