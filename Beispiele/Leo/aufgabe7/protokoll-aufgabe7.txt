@@ -1,0 +1,22 @@
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filesize xxx *
+stat: No such file or directory
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ls -l xxx *
+ls: cannot access 'xxx': No such file or directory
+-rwxrwxrwx 1 leo leo   377 Jun 13 17:39 Makefile
+-rwxrwxrwx 1 leo leo   764 Jun 13 10:31 count.c
+-rwxrwxrwx 1 leo leo 21152 Jun 23 14:19 filecopy
+-rwxrwxrwx 1 leo leo  3130 Jun 23 13:57 filecopy.c
+-rwxrwxrwx 1 leo leo 20664 Jun 23 14:19 filesize
+-rwxrwxrwx 1 leo leo  1221 Jun 23 14:00 filesize.c
+-rwxrwxrwx 1 leo leo     0 Jun 23 14:16 protokoll-aufgabe7.txt
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$  export LC_MESSAGES=C
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filecopy filecopy.c filecopy-kopie.c
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ diff filecopy.c filecopy-kopie.c
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filecopy bla.c blub.c
+bla.c: No such file or directory
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filecopy no_permission.c blub.c
+Fehler beim kopieren
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filecopy filecopy.c count.c
+count.c: File exists
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$ ./filecopy filecopy.c ./no_permissions/filecopy.c
+leo@Lenovo-E15-LT:/mnt/c/Data/003_University/002_Kurse/2_Semester/001_Systemprogrammierung/sypr/aufgabe7$
