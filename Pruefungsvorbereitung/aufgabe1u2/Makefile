@@ -1,20 +1,27 @@
-RM = rm -f
-TAR = tar czf
+#
+# Makefile
+#
+# Autor: H.Drachenfels
+# Erstellt am: 30.8.2021
+#
 
-TARGET = aufgabe1.tar.gz
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Werror -std=$(STD) -pedantic
+CPPCHECK = cppcheck --enable=warning,style --std=$(STD)
+STD = c11
 
-SOURCES = \
-	gruss.c \
-	grusstest.c \
-
-HEADERS = gruss.h
+TARGET = grusstest
+OBJECTS = gruss.o
 
 .PHONY: all clean
 
 all: $(TARGET)
 
 clean:
-	$(RM) $(TARGET)
+	rm -f $(TARGET) $(TARGET).o $(OBJECTS)
 
-$(TARGET): $(SOURCES) $(HEADERS)
-	$(TAR) $@ $^
+$(TARGET): $(TARGET).o $(OBJECTS)
+	$(CC) $(LDFLAGS) -o $@ $^
+
+gruss.o: gruss.c gruss.h
+grusstest.o: grusstest.c gruss.h

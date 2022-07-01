@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	{
 		uintmax_t n = 0;
 		unsigned char b;
-		while (read(0, &b, 1) > 0)
+		while (read(0, &b, 1) > 0) // On error, -1 is returned, and errno is set appropriately. 0 means EOF.
 		{
 			++n;
 		}
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 
 	for (int i = 1; i < argc; ++i)
     {
-		if (stat(argv[i], &buf) != 0)
+		if (stat(argv[i], &buf) != 0) // On success, zero is returned.  On error, -1 is returned, and errno is set appropriately.
 		{
 			perror(argv[i]);
 			continue;

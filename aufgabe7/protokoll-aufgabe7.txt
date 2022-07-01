@@ -1,0 +1,55 @@
+1. Kommt für die nicht vorhandene Datei xxx die gleiche Fehlermeldung? Ähnlich
+2. In welcher Sprache erscheint die Fehlermeldung: 1 mal englisch und bei ls deutsch
+
+3. Nach Export Befehler in welcher Sprache erscheinen die Änderungen? Beide englisch
+
+Wie verhält sich filecopy wenn
+4. die Quelldatei nicht existiert? Meldung: "Datei oder Verzeichnis nicht gefunden"
+5. sie kein Leserecht auf die Datei haben? Meldung: "Keine Berechtigung"
+6. die Zieldatei bereits existiert? Meldung: "Die Datei existiert bereits"
+7. sie kein Schreibrecht im Zielverzeichnis haben? Meldung: "Keine Berechtigung"
+
+
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ ./filesize xxx *
+xxx: No such file or directory
+filecopy: 17816 Byte
+filecopy.c: 1399 Byte
+filesize: 13128 Byte
+filesize.c: 585 Byte
+Makefile: 275 Byte
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$   ls -l xxx *
+ls: Zugriff auf 'xxx' nicht möglich: Datei oder Verzeichnis nicht gefunden
+-rwxrwxr-x 1 marc marc 17816 Jul  1 10:39 filecopy
+-rw-r--r-- 1 marc marc  1399 Jul  1 10:39 filecopy.c
+-rwxrwxr-x 1 marc marc 13128 Jul  1 10:39 filesize
+-rw-r--r-- 1 marc marc   585 Jul  1 10:39 filesize.c
+-rw-r--r-- 1 marc marc   275 Jul  1 10:39 Makefile
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ export LC_MESSAGES=C
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ ./filesize xxx *
+xxx: No such file or directory
+filecopy: 17816 Byte
+filecopy.c: 1399 Byte
+filesize: 13128 Byte
+filesize.c: 585 Byte
+Makefile: 275 Byte
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ ls -l xxx *
+ls: cannot access 'xxx': No such file or directory
+-rwxrwxr-x 1 marc marc 17816 Jul  1 10:39 filecopy
+-rw-r--r-- 1 marc marc  1399 Jul  1 10:39 filecopy.c
+-rwxrwxr-x 1 marc marc 13128 Jul  1 10:39 filesize
+-rw-r--r-- 1 marc marc   585 Jul  1 10:39 filesize.c
+-rw-r--r-- 1 marc marc   275 Jul  1 10:39 Makefile
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ ./filecopy filecopy.c filecopy-kopie.c
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ diff filecopy.c filecopy-kopie.c
+marc@marcubuntu:~/Schreibtisch/Studium/Semester2/Systemprogrammierung/sypr-uebungen/aufgabe7$ cd
+marc@marcubuntu:~$ mkdir tmp
+marc@marcubuntu:~$ cd tmp
+marc@marcubuntu:~/tmp$ 
+marc@marcubuntu:~/tmp$ ls -l
+insgesamt 52
+-rwxrwxr-x 1 marc marc 17816 Jul  1 10:39 filecopy
+-rw-r--r-- 1 marc marc  1399 Jul  1 10:39 filecopy.c
+-rw-r--r-- 1 marc marc  1399 Jul  1 11:30 filecopy-kopie.c
+-rwxrwxr-x 1 marc marc 13128 Jul  1 10:39 filesize
+-rw-r--r-- 1 marc marc   585 Jul  1 10:39 filesize.c
+-rw-r--r-- 1 marc marc   275 Jul  1 10:39 Makefile

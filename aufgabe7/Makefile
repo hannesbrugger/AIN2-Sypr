@@ -1,5 +1,14 @@
-CC = gcc -gccCFLAGS = -Wall -Wextra -Wvla -std=$(STD) -pedantic
-CPPCHECK = cppcheck --enable=warning,style = --std=$(STD)
+#
+# Makefile
+#
+# Autor: Marc Bohner
+# Erstellt am: 30.06.2022
+#
+
+
+CC = gcc -g
+CFLAGS = -Wall -Wextra -Wvla -std=$(STD) -pedantic
+CPPCHECK = cppcheck --enable=warning,style --std=$(STD)
 STD = c11
 
 TARGET = \

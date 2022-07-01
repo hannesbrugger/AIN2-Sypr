@@ -4,14 +4,16 @@
 int main()
 {
 	printf("Bitte Vorname eingeben: ");
-	const char *vorname;
+	//char *vorname;
 
-	if(scanf("%s", &vorname) == 0)
+	const char *vorname = (char *) malloc(21);
+
+	if(scanf("%21s", vorname) == 0)
 	{
 		return 1;
 	}
 
-	ausgeben(&vorname);
+	ausgeben(vorname);
 
 	return 0;
 }

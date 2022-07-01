@@ -7,7 +7,7 @@ const char *GRUSS_FORMAT = "%s %s!\n";
 
 void ausgeben(const char *vorname)
 {
-	if (strcmpr(vorname, "Sepp") == 0)
+	if (strcmp(vorname, "Sepp") == 0)
 	{
 		printf(GRUSS_FORMAT, "Servus", vorname);
 	}
