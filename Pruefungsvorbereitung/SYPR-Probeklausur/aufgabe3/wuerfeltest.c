@@ -7,7 +7,7 @@ int main(int argc, const char *argv[])
 	double k;
 	if (argc < 2)
 	{
-		//return 1;
+		return 1;
 	}
 	
 	if (sscanf(argv[1], "%lf", &k) < 1)
