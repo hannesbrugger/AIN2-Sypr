@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 void ausgeben(const char *vorname);
-const char *GRUSS_FORMAT = "%s %s!\n";
+//const char *GRUSS_FORMAT = "%s %s!\n";
 
 void ausgeben(const char *vorname)
 {

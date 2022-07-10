@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "stdio.h": "c",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "iostream": "cpp"
     }
 }

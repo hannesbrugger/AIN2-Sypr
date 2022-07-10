@@ -1,3 +1,4 @@
+# Lib
 CXX = g++ -g #-fno-elide-constructors
 CXXFLAGS = -fPIC -Wall -Wextra -Werror -Weffc++ -Wold-style-cast -std=$(STD) -pedantic
 STD = c++11
