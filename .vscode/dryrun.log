@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/marc/Studium/Semester2/Systemprogrammierung/sypr-uebungen'
 make: Leaving directory `/Users/marc/Studium/Semester2/Systemprogrammierung/sypr-uebungen'
  
