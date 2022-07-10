@@ -2,6 +2,6 @@
 #define QUADRAT_H
 
 double flaeche(double);
-double zumQuadrat(const double);
+static double zumQuadrat(const double);
 
 #endif
