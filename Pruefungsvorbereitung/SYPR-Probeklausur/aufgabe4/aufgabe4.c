@@ -16,4 +16,3 @@ int main(int argc, char *argv[])
 	strcat(st, t);
 	return 0;	
 }
-// hallo
