@@ -1,5 +1,7 @@
 #include "quadrat.h"
 
+static double zumQuadrat(const double);
+
 double flaeche(double seitenlaenge)
 {
 	return zumQuadrat(seitenlaenge);

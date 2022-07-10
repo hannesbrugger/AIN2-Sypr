@@ -6,7 +6,7 @@
 #
 
 CC = gcc -g
-CFLAGS = -Wall -Wextra -Werror -std=$(STD) -pedantic
+CFLAGS = -Wall -Wextra -std=$(STD) -pedantic
 CPPCHECK = cppcheck --enable=warning,style --std=$(STD)
 STD = c11
 
