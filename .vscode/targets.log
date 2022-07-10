@@ -10,13 +10,14 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Sun Jul 10 13:38:12 2022
+# Make data base, printed on Sun Jul 10 13:57:32 2022
 
 # Variables
 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
+ 
 ?F = $(notdir $?)
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -154,6 +155,7 @@ MAKELEVEL := 0
 LANG = C
 # environment
 VSCODE_PID = 5787
+ 
 # variable set hash-table stats:
 # Load=70/1024=7%, Rehash=0, Collisions=2/90=2%
 
@@ -221,7 +223,6 @@ GNUmakefile:
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
- 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
@@ -238,6 +239,6 @@ GNUmakefile:
 # strcache size: total = 0 / max = 0 / min = 4096 / avg = 0
 # strcache free: total = 0 / max = 0 / min = 4096 / avg = 0
 
-# Finished Make data base on Sun Jul 10 13:38:12 2022
+# Finished Make data base on Sun Jul 10 13:57:32 2022
 
  
