@@ -6,8 +6,9 @@
 int main()
 {
 	printf("Bitte Vorname eingeben: ");
-	//char *vorname;
+
 	char *vorname = (char *) malloc(21);
+	
 	if(scanf("%s", vorname) == 0)
 	{
 		return 1;
